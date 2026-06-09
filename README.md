@@ -1,0 +1,78 @@
+# STM32F103C8 EIDE + OpenOCD Template
+
+STM32F103C8T6 project template for VS Code, Embedded IDE (EIDE), Arm GNU
+Toolchain, and OpenOCD. The example blinks the common PC13 active-low LED.
+
+## Hardware
+
+- MCU: STM32F103C8T6
+- Core clock: 72 MHz from an 8 MHz HSE
+- LED: PC13
+- Debug interface: SWD
+- Debug probes: CMSIS-DAP by default, with an ST-Link configuration included
+
+## Requirements
+
+- VS Code
+- Embedded IDE (`cl.eide`)
+- Cortex-Debug (`marus25.cortex-debug`)
+- Arm GNU Toolchain (`arm-none-eabi-gcc`)
+- GNU Make
+- OpenOCD
+
+All required commands should be available in `PATH`.
+
+## Build
+
+Use the EIDE project toolbar, press `Ctrl+Shift+B`, or run:
+
+```powershell
+make
+```
+
+Outputs are written to `build/Debug/`.
+
+## Flash
+
+CMSIS-DAP:
+
+```powershell
+make flash
+```
+
+ST-Link:
+
+```powershell
+make flash OPENOCD_CFG=openocd/stlink.cfg
+```
+
+The EIDE uploader is configured for CMSIS-DAP. To use ST-Link from EIDE,
+select the OpenOCD uploader and change its interface to `stlink`.
+
+## Debug
+
+Open the Run and Debug panel and select either:
+
+- `STM32F103C8 - CMSIS-DAP`
+- `STM32F103C8 - ST-Link`
+
+The launch configurations build the project before starting OpenOCD.
+
+## Create A Project From This Template
+
+After marking the GitHub repository as a template, select **Use this
+template** on GitHub. Rename these identifiers when creating a real project:
+
+- `.eide/eide.json`: project name and output file names
+- `Makefile`: `TARGET`
+- `stm32f103c8_template.ioc`: CubeMX project name, if needed
+
+Keep the MCU definition, startup file, and linker script aligned when changing
+to a different STM32F1 device.
+
+## Upstream
+
+Derived from the `f1_templete/st_cube_demo` example in
+<https://github.com/1370773758/vscode-eide-openocd>.
+
+STMicroelectronics source files retain their original license notices.

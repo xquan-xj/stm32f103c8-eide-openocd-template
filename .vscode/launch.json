@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "STM32F103C8 - CMSIS-DAP",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/Debug/stm32f103c8_template.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [
+                "${workspaceFolder}/openocd/cmsis-dap.cfg"
+            ],
+            "runToEntryPoint": "main",
+            "preLaunchTask": "build"
+        },
+        {
+            "name": "STM32F103C8 - ST-Link",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/Debug/stm32f103c8_template.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [
+                "${workspaceFolder}/openocd/stlink.cfg"
+            ],
+            "runToEntryPoint": "main",
+            "preLaunchTask": "build"
+        }
+    ]
+}
