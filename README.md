@@ -31,6 +31,10 @@ C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\14.2 rel1
 The path is configured for EIDE in `.vscode/settings.json` and for Make in
 `Makefile`.
 
+OpenOCD installed by WinGet is also configured with its absolute path for
+Cortex-Debug and `make flash`. Open a new terminal after installation before
+using the shorter `openocd` command directly.
+
 ## Build
 
 Use the EIDE project toolbar, press `Ctrl+Shift+B`, or run:

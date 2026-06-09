@@ -191,14 +191,14 @@ $(BUILD_DIR):
 clean:
 	-rm -fR $(BUILD_DIR)
 
-OPENOCD ?= openocd
+OPENOCD ?= C:/Users/31753/AppData/Local/Microsoft/WinGet/Packages/xpack-dev-tools.openocd-xpack_Microsoft.Winget.Source_8wekyb3d8bbwe/xpack-openocd-0.12.0-7/bin/openocd.exe
 OPENOCD_CFG ?= openocd/stlink.cfg
 
 flash: all
-	$(OPENOCD) -f $(OPENOCD_CFG) -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+	"$(OPENOCD)" -f $(OPENOCD_CFG) -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 
 erase:
-	$(OPENOCD) -f $(OPENOCD_CFG) -c "init; reset halt; stm32f1x mass_erase 0; reset run; shutdown"
+	"$(OPENOCD)" -f $(OPENOCD_CFG) -c "init; reset halt; stm32f1x mass_erase 0; reset run; shutdown"
   
 #######################################
 # dependencies
