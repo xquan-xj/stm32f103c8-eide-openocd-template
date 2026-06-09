@@ -19,4 +19,4 @@ jobs:
           sudo apt-get install --yes gcc-arm-none-eabi
 
       - name: Build firmware
-        run: make -j2
+        run: make -j2 GCC_PATH=

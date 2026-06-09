@@ -42,12 +42,17 @@
         },
         "options": "null"
       },
-      "uploader": "OpenOCD",
+      "uploader": "STLink",
       "uploadConfig": {
-        "bin": "build/Debug/stm32f103c8_template.hex",
-        "target": "stm32f1x",
-        "interface": "cmsis-dap",
-        "baseAddr": "0x08000000"
+        "bin": "build/Debug/stm32f103c8_template.bin",
+        "proType": "SWD",
+        "resetMode": "SWrst",
+        "runAfterProgram": true,
+        "speed": "8000",
+        "address": "0x08000000",
+        "elFile": "None",
+        "optionBytes": ".eide/debug.st.option.bytes.ini",
+        "otherCmds": ""
       },
       "uploadConfigMap": {
         "JLink": {

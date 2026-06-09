@@ -69,13 +69,14 @@ ASMM_SOURCES =
 # binaries
 #######################################
 PREFIX = arm-none-eabi-
+GCC_PATH ?= C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin
 # The gcc compiler bin path can be either defined in make command via GCC_PATH variable (> make GCC_PATH=xxx)
 # either it can be added to the PATH environment variable.
-ifdef GCC_PATH
-CC = $(GCC_PATH)/$(PREFIX)gcc
-AS = $(GCC_PATH)/$(PREFIX)gcc -x assembler-with-cpp
-CP = $(GCC_PATH)/$(PREFIX)objcopy
-SZ = $(GCC_PATH)/$(PREFIX)size
+ifneq ($(strip $(GCC_PATH)),)
+CC = "$(GCC_PATH)/$(PREFIX)gcc"
+AS = "$(GCC_PATH)/$(PREFIX)gcc" -x assembler-with-cpp
+CP = "$(GCC_PATH)/$(PREFIX)objcopy"
+SZ = "$(GCC_PATH)/$(PREFIX)size"
 else
 CC = $(PREFIX)gcc
 AS = $(PREFIX)gcc -x assembler-with-cpp
@@ -191,7 +192,7 @@ clean:
 	-rm -fR $(BUILD_DIR)
 
 OPENOCD ?= openocd
-OPENOCD_CFG ?= openocd/cmsis-dap.cfg
+OPENOCD_CFG ?= openocd/stlink.cfg
 
 flash: all
 	$(OPENOCD) -f $(OPENOCD_CFG) -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"

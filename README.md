@@ -9,7 +9,7 @@ Toolchain, and OpenOCD. The example blinks the common PC13 active-low LED.
 - Core clock: 72 MHz from an 8 MHz HSE
 - LED: PC13
 - Debug interface: SWD
-- Debug probes: CMSIS-DAP by default, with an ST-Link configuration included
+- Debug probes: ST-Link by default, with a CMSIS-DAP configuration included
 
 ## Requirements
 
@@ -21,6 +21,15 @@ Toolchain, and OpenOCD. The example blinks the common PC13 active-low LED.
 - OpenOCD
 
 All required commands should be available in `PATH`.
+
+On Windows, this template defaults to Arm GNU Toolchain 14.2 at:
+
+```text
+C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\14.2 rel1
+```
+
+The path is configured for EIDE in `.vscode/settings.json` and for Make in
+`Makefile`.
 
 ## Build
 
@@ -34,20 +43,19 @@ Outputs are written to `build/Debug/`.
 
 ## Flash
 
-CMSIS-DAP:
+ST-Link:
 
 ```powershell
 make flash
 ```
 
-ST-Link:
+CMSIS-DAP:
 
 ```powershell
-make flash OPENOCD_CFG=openocd/stlink.cfg
+make flash OPENOCD_CFG=openocd/cmsis-dap.cfg
 ```
 
-The EIDE uploader is configured for CMSIS-DAP. To use ST-Link from EIDE,
-select the OpenOCD uploader and change its interface to `stlink`.
+The EIDE uploader is configured for ST-Link.
 
 ## Debug
 
